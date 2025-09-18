@@ -1,20 +1,21 @@
 import { styled } from "@stitches/react";
 
 const sharedStyles = {
-  color: "#4c4f69",
-  fontSize: "1.25rem",
-  width: "clamp(40vw, 25vw, 60vw)",
-  height: "2rem",
-  backgroundColor: "#eff1f5",
-  borderRadius: "8px",
-  border: "2px solid #8c8fa1",
-  padding: "0 0.5rem",
-  lineHeight: "1.75rem",
+  color: "var(--text)",
+  fontSize: "1.125rem",
+  width: "clamp(260px, 40vw, 560px)",
+  height: "2.5rem",
+  backgroundColor: "var(--surface)",
+  borderRadius: "10px",
+  border: "1px solid var(--border)",
+  padding: "0 0.75rem",
+  lineHeight: "2.5rem",
   boxSizing: "border-box",
+  transition: "box-shadow 0.2s, border-color 0.2s",
   "&:focus": {
     outline: "none",
-    borderColor: "#dc8a78",
-    boxShadow: "0 0 0 2px #dc8a78AA",
+    borderColor: "var(--brand)",
+    boxShadow: "0 0 0 3px rgba(220, 138, 120, 0.25)",
   },
 };
 
@@ -23,13 +24,14 @@ export const Input = styled("input", sharedStyles);
 export const Select = styled("select", sharedStyles);
 
 export const Heading = styled("h2", {
-  color: "#4c4f69",
-  fontSize: "2rem",
+  color: "var(--text)",
+  fontSize: "1.75rem",
+  letterSpacing: "0.2px",
 });
 
 const sharedTextStyles = {
-  color: "#4c4f69",
-  fontSize: "1.25rem",
+  color: "var(--text)",
+  fontSize: "1.125rem",
   marginBottom: "8px",
 };
 
@@ -38,37 +40,43 @@ export const Paragraph = styled("p", sharedTextStyles);
 export const Label = styled("label", sharedTextStyles);
 
 export const Span = styled("span", sharedTextStyles, {
-  fontWeight: "bold",
-  fontSize: "1.5rem",
+  fontWeight: "600",
+  fontSize: "1.25rem",
 });
 
 export const ListItem = styled("li", sharedTextStyles, {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  marginBottom: "1.5rem",
-  padding: "0.25rem 0",
-  gap: "8rem",
-  fontSize: "1.5rem",
+  marginBottom: "1rem",
+  padding: "0.75rem 1rem",
+  gap: "1rem",
+  fontSize: "1.125rem",
+  backgroundColor: "var(--surface)",
+  border: "1px solid var(--border)",
+  borderRadius: "10px",
+  boxShadow: "var(--shadow-sm)",
 });
 
 export const Button = styled("button", {
-  backgroundColor: "#dc8a78",
-  height: "2rem",
+  backgroundColor: "var(--brand)",
+  height: "2.5rem",
   padding: "0 1rem",
   marginLeft: "0.5rem",
-  color: "#eff1f5;",
-  fontSize: "1.25rem",
-  fontWeight: "bold",
-  border: "2px solid #dc8a78",
-  borderRadius: "8px",
-  // width: "7rem",
+  color: "#fff",
+  fontSize: "1rem",
+  fontWeight: 600,
+  border: "1px solid var(--brand)",
+  borderRadius: "10px",
   width: "auto",
   cursor: "pointer",
-  transition: "transform 0.2s",
-  boxShadow:
-    "2.5px 2.5px 2.5px -2.5px rgba(0, 0, 0, 0.25), 5px 5px 5px -5px rgba(0, 0, 0, 0.15)",
+  transition: "transform 0.15s ease, background-color 0.2s ease",
+  boxShadow: "var(--shadow-sm)",
   "&:hover": {
-    transform: "scale(1.05)",
+    transform: "translateY(-1px)",
+    backgroundColor: "var(--brand-600)",
+  },
+  "&:active": {
+    transform: "translateY(0)",
   },
 });

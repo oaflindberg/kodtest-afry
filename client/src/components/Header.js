@@ -4,50 +4,63 @@ import { Link } from "react-router-dom";
 export const Header = () => {
   return (
     <SHeader>
-      <Text to="/">People & Companies</Text>
-      <Nav>
-        <StyledLink to="/people">People</StyledLink>
-        <StyledLink to="/companies">Companies</StyledLink>
-      </Nav>
+      <Container>
+        <Text to="/">People & Companies</Text>
+        <Nav>
+          <StyledLink to="/">Home</StyledLink>
+          <StyledLink to="/people">People</StyledLink>
+          <StyledLink to="/companies">Companies</StyledLink>
+        </Nav>
+      </Container>
     </SHeader>
   );
 };
 
 const SHeader = styled("header", {
-  backgroundColor: "#dc8a78",
-  height: "100px",
+  backgroundColor: "var(--surface)",
+  position: "sticky",
+  top: 0,
+  zIndex: 10,
+  borderBottom: "1px solid var(--border)",
+  boxShadow: "var(--shadow-sm)",
+});
+
+const Container = styled("div", {
+  height: "72px",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
   padding: "0 20px",
+  margin: "0 auto",
+  maxWidth: "1100px",
+  width: "100%",
+  boxSizing: "border-box",
 });
 
 const Text = styled(Link, {
   textTransform: "uppercase",
-  color: "#4c4f69",
+  color: "var(--text)",
   textDecoration: "none",
-  fontSize: "1.5rem",
-  fontWeight: "bold",
-  margin: 0,
-  transition: "transform 0.2s ease-in-out",
-  "&:hover": {
-    transform: "scale(1.05)",
-  },
+  fontSize: "1.25rem",
+  fontWeight: 700,
+  letterSpacing: "0.4px",
 });
 
 const Nav = styled("nav", {
   display: "flex",
-  gap: "1rem",
+  gap: "0.75rem",
 });
 
 const StyledLink = styled(Link, {
   textTransform: "uppercase",
   textDecoration: "none",
-  fontSize: "1.25rem",
-  color: "#4c4f69",
-  fontWeight: "bold",
-  transition: "transform 0.2s ease-in-out",
+  fontSize: "0.95rem",
+  color: "var(--text)",
+  fontWeight: 600,
+  padding: "0.5rem 0.75rem",
+  borderRadius: "8px",
+  transition: "background-color 0.2s ease",
   "&:hover": {
-    transform: "scale(1.15)",
+    backgroundColor: "var(--surface-muted)",
   },
 });

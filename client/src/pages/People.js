@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { styled } from "@stitches/react";
 import { Button, Heading, Span, Select } from "../styling/styles";
+import { Card, CardHeader, CardTitle, CardContent } from "../components/Card";
 
 const API = "http://localhost:4000";
 
@@ -43,28 +44,34 @@ const People = () => {
       <Heading>Unassigned People</Heading>
       {persons.length === 0 && <p>All people are assigned to a company.</p>}
       {persons.map((p) => (
-        <PersonRow key={p.id}>
-          <Span>{p.name}</Span>
-          <ActionRow>
-            <Select
-              value={selectedCompany[p.id] || ""}
-              onChange={(e) =>
-                setSelectedCompany({
-                  ...selectedCompany,
-                  [p.id]: e.target.value,
-                })
-              }
-            >
-              <option value="">Select company</option>
-              {companies.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name}
-                </option>
-              ))}
-            </Select>
-            <Button onClick={() => handleAssign(p.id)}>Assign</Button>
-          </ActionRow>
-        </PersonRow>
+        <Card key={p.id} style={{ width: "100%", maxWidth: 700 }}>
+          <CardHeader style={{ gap: 12, flexWrap: "wrap" }}>
+            <Name>
+              <Span>{p.name}</Span>
+            </Name>
+            <ActionRow>
+              <CompanySelect
+                value={selectedCompany[p.id] || ""}
+                onChange={(e) =>
+                  setSelectedCompany({
+                    ...selectedCompany,
+                    [p.id]: e.target.value,
+                  })
+                }
+              >
+                <option value="">Select company</option>
+                {companies.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.name}
+                  </option>
+                ))}
+              </CompanySelect>
+              <AssignButton onClick={() => handleAssign(p.id)}>
+                Assign
+              </AssignButton>
+            </ActionRow>
+          </CardHeader>
+        </Card>
       ))}
     </Container>
   );
@@ -87,6 +94,25 @@ const PersonRow = styled("div", {
 
 const ActionRow = styled("div", {
   display: "flex",
+  alignItems: "center",
   gap: "0.5rem",
+  flexShrink: 0,
+});
+
+const Name = styled("div", {
+  flex: 1,
+  minWidth: 180,
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
+});
+
+const CompanySelect = styled(Select, {
+  width: "220px",
+  maxWidth: "60vw",
+});
+
+const AssignButton = styled(Button, {
+  marginLeft: 0,
 });
 export default People;

@@ -3,6 +3,7 @@ import axios from "axios";
 import { styled } from "@stitches/react";
 import { toast } from "react-hot-toast";
 import { Button, Label, Heading, Input, Select } from "../styling/styles";
+import { Card, CardHeader, CardTitle, CardContent } from "../components/Card";
 
 const API = "http://localhost:4000";
 
@@ -23,7 +24,7 @@ const Home = () => {
     const companyName = company ? company.name : undefined;
 
     toast.success(
-      companyName ? `${name} added to ${companyName}` : `${name} added`,
+      companyName ? `${name} added to ${companyName}` : `${name} added`
     );
     setName("");
     setCompanyId("");
@@ -31,32 +32,38 @@ const Home = () => {
 
   return (
     <Container>
-      <Heading>Add a Person</Heading>
-      <form onSubmit={handleSubmit}>
-        <InputWrapper>
-          <Label>Name: </Label>
-          <Input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </InputWrapper>
-        <InputWrapper>
-          <Label>Company: </Label>
-          <Select
-            value={companyId}
-            onChange={(e) => setCompanyId(e.target.value)}
-          >
-            <option value="">No company</option>
-            {companies.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.name}
-              </option>
-            ))}
-          </Select>
-        </InputWrapper>
-        <CustomButton type="submit">Add Person</CustomButton>
-      </form>
+      <Card style={{ width: "100%", maxWidth: 700 }}>
+        <CardHeader>
+          <CardTitle style={{ marginBottom: 10 }}>Add a Person</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit}>
+            <InputWrapper>
+              <Label>Name</Label>
+              <CustomInput
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </InputWrapper>
+            <InputWrapper>
+              <Label>Company</Label>
+              <CustomSelect
+                value={companyId}
+                onChange={(e) => setCompanyId(e.target.value)}
+              >
+                <option value="">No company</option>
+                {companies.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.name}
+                  </option>
+                ))}
+              </CustomSelect>
+            </InputWrapper>
+            <CustomButton type="submit">Add Person</CustomButton>
+          </form>
+        </CardContent>
+      </Card>
     </Container>
   );
 };
@@ -65,7 +72,7 @@ const Container = styled("div", {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  height: "80vh",
+  minHeight: "60vh",
   flexDirection: "column",
 });
 
@@ -75,23 +82,13 @@ const InputWrapper = styled("div", {
   marginBottom: "1rem",
 });
 
-// const Button = styled("button", {
-//   backgroundColor: "#dc8a78",
-//   color: "#eff1f5;",
-//   fontSize: "1.25rem",
-//   fontWeight: "bold",
-//   width: "10rem",
-//   height: "2.5rem",
-//   border: "none",
-//   borderRadius: "8px",
-//   marginTop: "1rem",
-//   cursor: "pointer",
-//   transition: "transform 0.2s",
-//   "&:hover": {
-//     transform: "scale(1.05)",
-//   },
-// });
-//
-
 const CustomButton = styled(Button, { marginLeft: 0 });
+
+const CustomInput = styled(Input, {
+  width: "100%",
+});
+
+const CustomSelect = styled(Select, {
+  width: "100%",
+});
 export default Home;

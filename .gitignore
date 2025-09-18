@@ -1,8 +1,6 @@
+.DS_Store
 node_modules
-# Keep environment variables out of version control
 .env
-
-server/generated/prisma
 
 client/build   
 client/node_modules
@@ -14,6 +12,7 @@ client/.env.production.local
 client/npm-debug.log*
 client/yarn-debug.log*
 client/yarn-error.log*
+client/.DS_Store
 
 server/node_modules
 server/.env
@@ -24,7 +23,5 @@ server/.env.production.local
 server/npm-debug.log*
 server/yarn-debug.log*
 server/yarn-error.log*
-
-.DS_Store
-client/.DS_Store
+server/generated/prisma
 server/.DS_Store
