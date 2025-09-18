@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { styled } from "@stitches/react";
 import { toast } from "react-hot-toast";
-import { Button, Label, Heading, Input, Select } from "../styling/styles";
+import { Button, Label, Input, Select } from "../styling/styles";
 import { Card, CardHeader, CardTitle, CardContent } from "../components/Card";
 
 const API = "http://localhost:4000";
@@ -24,7 +24,7 @@ const Home = () => {
     const companyName = company ? company.name : undefined;
 
     toast.success(
-      companyName ? `${name} added to ${companyName}` : `${name} added`
+      companyName ? `${name} added to ${companyName}` : `${name} added`,
     );
     setName("");
     setCompanyId("");

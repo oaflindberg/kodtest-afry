@@ -2,14 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { styled } from "@stitches/react";
-import {
-  Input,
-  Select,
-  Button,
-  Heading,
-  ListItem,
-  Paragraph,
-} from "../styling/styles";
+import { Input, Select, Button, ListItem, Paragraph } from "../styling/styles";
 import { Card, CardHeader, CardTitle, CardContent } from "../components/Card";
 
 const API = "http://localhost:4000";
@@ -29,7 +22,7 @@ const Companies = () => {
   }, []);
 
   const selectedCompany = companies.find(
-    (c) => c.id === Number(selectedCompanyId)
+    (c) => c.id === Number(selectedCompanyId),
   );
   const employeesForSelectedCompany = selectedCompany
     ? selectedCompany.persons
@@ -129,14 +122,6 @@ const Container = styled("div", {
   gap: "1rem",
 });
 
-const Block = styled("div", {
-  width: "100%",
-  maxWidth: "600px",
-  display: "flex",
-  flexDirection: "column",
-  gap: "0.5rem",
-});
-
 const Form = styled("form", {
   display: "flex",
   gap: "0.5rem",
@@ -144,10 +129,6 @@ const Form = styled("form", {
   "& > button": {
     flexShrink: 0,
   },
-});
-
-const EmployeesContainer = styled("div", {
-  marginTop: "1rem",
 });
 
 const List = styled("ul", {

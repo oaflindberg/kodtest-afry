@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { styled } from "@stitches/react";
 import { Button, Heading, Span, Select } from "../styling/styles";
-import { Card, CardHeader, CardTitle, CardContent } from "../components/Card";
+import { Card, CardHeader } from "../components/Card";
 
 const API = "http://localhost:4000";
 
@@ -82,14 +82,6 @@ const Container = styled("div", {
   flexDirection: "column",
   alignItems: "center",
   gap: "1rem",
-});
-
-const PersonRow = styled("div", {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "flex-start",
-  gap: "0.25rem",
-  marginBottom: "1rem",
 });
 
 const ActionRow = styled("div", {
